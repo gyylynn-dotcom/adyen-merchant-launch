@@ -11,7 +11,7 @@
   --amber: #fff4df;
   --blue: #eef5ff;
   --shadow: 0 18px 45px rgba(6, 20, 47, 0.1);
-  font-family: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+  font-family: "Adyen", "Helvetica", "Arial", "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -26,7 +26,7 @@ a { color: inherit; }
 h1, h2, h3, h4, p { margin-top: 0; }
 h1 { max-width: 900px; margin-bottom: 18px; font-size: clamp(46px, 8vw, 86px); line-height: 1; letter-spacing: 0; }
 h1 span { display: block; }
-.brand-title { max-width: 980px; font-family: "Arial Rounded MT Bold", "Inter", "Noto Sans SC", "Microsoft YaHei UI", Arial, sans-serif; font-size: clamp(58px, 10vw, 118px); font-weight: 950; line-height: 0.92; text-transform: uppercase; }
+.brand-title { max-width: 980px; font-family: "Adyen", "Helvetica", "Arial", "Inter", sans-serif; font-size: clamp(58px, 10vw, 118px); font-weight: 484; line-height: 0.94; letter-spacing: 0; text-transform: uppercase; }
 .brand-title span:first-child { color: var(--ink); }
 .brand-title span:last-child { color: var(--green); }
 h2 { margin-bottom: 12px; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; letter-spacing: 0; }
@@ -106,8 +106,17 @@ ul, ol { margin: 0; padding-left: 20px; color: var(--muted); line-height: 1.7; }
 
 .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .contact-card { display: flex; gap: 18px; align-items: center; min-height: 150px; border: 1px solid var(--line); border-radius: 8px; padding: 24px; background: #fff; box-shadow: var(--shadow); }
-.contact-icon { display: grid; place-items: center; flex: 0 0 auto; width: 58px; height: 58px; border-radius: 8px; color: #fff; background: var(--green); font-size: 26px; font-weight: 950; }
-.contact-icon.red { background: #ff2442; }
+.contact-mark { position: relative; display: grid; place-items: center; flex: 0 0 auto; width: 62px; height: 62px; border-radius: 8px; color: #fff; font-weight: 950; }
+.contact-mark.wechat { background: #07c160; }
+.contact-mark.wechat i,
+.contact-mark.wechat b { position: absolute; display: block; border-radius: 999px; background: #fff; }
+.contact-mark.wechat i { left: 13px; top: 16px; width: 30px; height: 23px; }
+.contact-mark.wechat b { right: 12px; bottom: 15px; width: 28px; height: 21px; }
+.contact-mark.wechat::before,
+.contact-mark.wechat::after { content: ""; position: absolute; z-index: 1; width: 4px; height: 4px; border-radius: 50%; background: #07c160; }
+.contact-mark.wechat::before { left: 22px; top: 24px; }
+.contact-mark.wechat::after { left: 33px; top: 24px; }
+.contact-mark.xhs { background: #ff2442; font-size: 17px; letter-spacing: 0; }
 .contact-card p { margin-bottom: 0; }
 .contact-card strong { color: var(--ink); font-size: 20px; }
 
