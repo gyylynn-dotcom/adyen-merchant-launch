@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adyen Merchant Launch Guide</title>
-    <link rel="stylesheet" href="styles.css?v=2" />
+    <link rel="stylesheet" href="styles.css?v=3" />
   </head>
   <body>
     <main class="workspace">
@@ -19,7 +19,6 @@
           <button class="nav-item" type="button" data-section="agreements">协议</button>
           <button class="nav-item" type="button" data-section="saqa">SAQ A</button>
           <button class="nav-item" type="button" data-section="production">生产环境</button>
-          <button class="nav-item" type="button" data-section="visual">视觉图</button>
           <button class="nav-item" type="button" data-section="sources">参考</button>
         </nav>
       </header>
@@ -31,16 +30,21 @@
           <p>建议商户按顺序推进。每一步都包含负责人、材料、检查点和后台路径，适合 Sales、财务、技术、客服一起使用。</p>
         </div>
         <div id="launchSteps" class="launch-steps"></div>
-        <div class="two-column after-block">
-          <article class="panel">
-            <h3>本版诊断</h3>
-            <div id="diagnostics" class="dense-list"></div>
-          </article>
-          <article class="panel">
-            <h3>上线前最小检查</h3>
-            <div id="readiness" class="checklist"></div>
-            <button id="copyChecklist" class="primary-btn" type="button">复制检查清单</button>
-          </article>
+        <article class="panel overview-check after-block">
+          <h3>上线前最小检查</h3>
+          <div id="readiness" class="checklist"></div>
+          <button id="copyChecklist" class="primary-btn" type="button">复制检查清单</button>
+        </article>
+        <div class="overview-visual after-block">
+          <div class="section-heading compact">
+            <p class="eyebrow">Visual reference</p>
+            <h2>视觉图作为总览收尾，帮助商户理解上线节奏</h2>
+            <p>这张图保留品牌感和完整性，但不再抢占商户最需要先看到的操作路径。</p>
+          </div>
+          <figure class="visual-stage">
+            <img src="adyen-launch-visual.png" alt="Adyen merchant launch visual" />
+            <figcaption>商户完成测试、KYC、协议和 SAQ A 后，进入生产环境上线。</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -105,18 +109,6 @@
         </div>
       </section>
 
-      <section id="visual" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Visual reference</p>
-          <h2>视觉图放在页面底部，作为总结而不是首屏阻挡</h2>
-          <p>这张图保留品牌感和完整性，但不再抢占商户最需要先看到的操作路径。</p>
-        </div>
-        <figure class="visual-stage">
-          <img src="adyen-launch-visual.png" alt="Adyen merchant launch visual" />
-          <figcaption>商户完成测试、KYC、协议和 SAQ A 后，进入生产环境上线。</figcaption>
-        </figure>
-      </section>
-
       <section id="sources" class="section">
         <div class="section-heading">
           <p class="eyebrow">References</p>
@@ -127,7 +119,7 @@
       </section>
     </main>
 
-    <script src="config.js?v=2"></script>
-    <script src="app.js?v=2"></script>
+    <script src="config.js?v=3"></script>
+    <script src="app.js?v=3"></script>
   </body>
 </html>

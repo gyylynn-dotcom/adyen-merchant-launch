@@ -46,10 +46,6 @@
       .join("");
   }
 
-  function renderDiagnostics() {
-    $("#diagnostics").innerHTML = config.diagnostics.map((item) => `<p><strong>${item.title}</strong>${item.detail}</p>`).join("");
-  }
-
   function renderCountryTabs() {
     $("#countryTabs").innerHTML = config.countries
       .map((country) => `<button class="${country.id === state.country ? "active" : ""}" type="button" data-country="${country.id}">${country.label}</button>`)
@@ -72,6 +68,7 @@
           <h3>${country.heading}</h3>
           <p>${country.registration}</p>
         </div>
+        <button id="copyCountryMaterials" class="copy-btn" type="button">复制当前主体材料</button>
       </div>
       <div class="country-columns">
         <article><h4>常见公司类型</h4>${list(country.entityTypes)}</article>
@@ -85,6 +82,31 @@
       <p class="strong-note"><strong>重要：</strong>身份文件建议用手机直接拍照上传，确保四角完整、彩色清晰、无遮挡、不反光。</p>
       <p class="mini-note">${country.note}</p>
     `;
+  }
+
+  function getCountryMaterialText() {
+    const country = config.countries.find((item) => item.id === state.country);
+    const lines = [
+      country.heading,
+      "",
+      country.registration,
+      "",
+      "常见公司类型：",
+      ...country.entityTypes.map((item) => `- ${item}`),
+      "",
+      "该国家/地区特有注册文件：",
+      ...country.registrationDocuments.map((item) => `- ${item}`),
+      "",
+      "注册号/登记信息：",
+      country.registrationNumber,
+      "",
+      "共用所需信息：",
+      ...config.sharedKycMaterials.map((item) => `- ${item}`),
+      "",
+      "上传提醒：身份文件建议用手机直接拍照上传，确保四角完整、彩色清晰、无遮挡、不反光。",
+      country.note
+    ];
+    return lines.join("\n");
   }
 
   function renderScreen(target, screen) {
@@ -135,6 +157,12 @@
     document.addEventListener("click", (event) => {
       const jump = event.target.closest("[data-jump]");
       if (jump) setActiveSection(jump.dataset.jump);
+      const countryCopy = event.target.closest("#copyCountryMaterials");
+      if (countryCopy) {
+        navigator.clipboard.writeText(getCountryMaterialText());
+        countryCopy.textContent = "已复制";
+        setTimeout(() => (countryCopy.textContent = "复制当前主体材料"), 1600);
+      }
     });
     $$(".nav-item").forEach((button) => button.addEventListener("click", () => setActiveSection(button.dataset.section)));
     $("#copyChecklist").addEventListener("click", async () => {
@@ -147,7 +175,6 @@
 
   function init() {
     renderLaunchSteps();
-    renderDiagnostics();
     renderChecks("#readiness", config.readinessChecklist);
     renderCards("#testSteps", config.testSteps, "Test setup");
     renderScreen("#testScreen", config.testScreen);
