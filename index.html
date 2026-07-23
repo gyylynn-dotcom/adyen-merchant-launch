@@ -7,133 +7,125 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="site-shell">
-      <main class="workspace">
-        <header class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">WELCOME TO ADYEN</p>
-            <h1>欢迎开启ADYEN之旅</h1>
-            <nav class="nav-list hero-nav" aria-label="Main navigation">
-              <button class="nav-item active" type="button" data-section="overview">总览</button>
-              <button class="nav-item" type="button" data-section="test">测试环境</button>
-              <button class="nav-item" type="button" data-section="kyc">KYC</button>
-              <button class="nav-item" type="button" data-section="agreements">协议</button>
-              <button class="nav-item" type="button" data-section="saqa">SAQ A</button>
-              <button class="nav-item" type="button" data-section="production">生产环境</button>
-            </nav>
-          </div>
-          <div class="hero-visual" aria-label="Adyen launch visual">
-            <div class="image-stage">
-              <img src="adyen-launch-visual.png" alt="Adyen merchant launch visual" />
-            </div>
-          </div>
-        </header>
+    <main class="workspace">
+      <header class="hero">
+        <p class="eyebrow">WELCOME TO ADYEN</p>
+        <h1>欢迎开启 ADYEN 之旅</h1>
+        <p class="hero-lead">一页完成商户上线准备：测试环境、KYC 材料、协议电子签、SAQ A、生产环境账号和后台操作路径。</p>
+        <nav class="nav-list" aria-label="Main navigation">
+          <button class="nav-item active" type="button" data-section="overview">总览</button>
+          <button class="nav-item" type="button" data-section="test">测试环境</button>
+          <button class="nav-item" type="button" data-section="kyc">KYC</button>
+          <button class="nav-item" type="button" data-section="agreements">协议</button>
+          <button class="nav-item" type="button" data-section="saqa">SAQ A</button>
+          <button class="nav-item" type="button" data-section="production">生产环境</button>
+          <button class="nav-item" type="button" data-section="visual">视觉图</button>
+          <button class="nav-item" type="button" data-section="sources">参考</button>
+        </nav>
+      </header>
 
-        <section id="overview" class="section active">
-          <div class="section-band">
-            <div class="launch-intro">
-              <p class="eyebrow">Launch sequence</p>
-              <h2>完成前四步后，即可获取生产环境账号</h2>
-            </div>
-            <div id="launchSteps" class="launch-steps"></div>
-          </div>
-        </section>
+      <section id="overview" class="section active">
+        <div class="section-heading">
+          <p class="eyebrow">Launch sequence</p>
+          <h2>完成前四步后，即可获取生产环境账号</h2>
+          <p>建议商户按顺序推进。每一步都包含负责人、材料、检查点和后台路径，适合 Sales、财务、技术、客服一起使用。</p>
+        </div>
+        <div id="launchSteps" class="launch-steps"></div>
+        <div class="two-column after-block">
+          <article class="panel">
+            <h3>本版诊断</h3>
+            <div id="diagnostics" class="dense-list"></div>
+          </article>
+          <article class="panel">
+            <h3>上线前最小检查</h3>
+            <div id="readiness" class="checklist"></div>
+            <button id="copyChecklist" class="primary-btn" type="button">复制检查清单</button>
+          </article>
+        </div>
+      </section>
 
-        <section id="test" class="section">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Step 01</p>
-              <h2>获取测试环境账号</h2>
-              <p>测试环境登录网址：<strong>CA-TEST.ADYEN.COM</strong>。请使用 Google Authenticator 或 Microsoft Authenticator 进行多重验证登录。正式入驻前，可以先使用测试后台和测试凭证完成用户创建、API Key、Client Key、Webhook、测试支付、退款和报表流程验证。</p>
-            </div>
-          </div>
-          <div id="testSteps" class="visual-steps"></div>
-        </section>
+      <section id="test" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Step 01</p>
+          <h2>获取测试环境账号</h2>
+          <p>测试环境登录网址：<strong>CA-TEST.ADYEN.COM</strong>。请使用 Google Authenticator 或 Microsoft Authenticator 进行多重验证登录。</p>
+        </div>
+        <div id="testSteps" class="card-grid"></div>
+        <div id="testScreen" class="screen-guide after-block"></div>
+      </section>
 
-        <section id="kyc" class="section">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Step 02</p>
-              <h2>提交 KYC 材料</h2>
-              <p>选择商户实体注册地，页面会显示该国家/地区特有的注册文件/商业登记文件，以及所有国家共用的股东、签字人、联系人和业务链接材料。</p>
-            </div>
-          </div>
-          <div id="countryTabs" class="country-tabs"></div>
-          <div id="countryPanel" class="country-panel"></div>
-          <div class="section-heading compact">
-            <div>
-              <p class="eyebrow">Upload guidance</p>
-              <h2>在测试环境表单中提交 KYC 材料</h2>
-              <p>可以先发布当前页面。真实测试环境截图后续由你提供，我再替换到这里。</p>
-            </div>
-          </div>
-          <div id="kycUploadSteps" class="visual-steps"></div>
-        </section>
+      <section id="kyc" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Step 02</p>
+          <h2>提交 KYC 材料</h2>
+          <p>选择实体注册地后，页面会显示该国家/地区特有注册文件，以及所有国家共用的股东、签字人、联系人和业务链接材料。</p>
+        </div>
+        <div id="countryTabs" class="country-tabs"></div>
+        <div id="countryPanel" class="country-panel"></div>
+        <div class="two-column after-block">
+          <article class="panel">
+            <h3>上传前复查</h3>
+            <div id="kycReview" class="checklist"></div>
+          </article>
+          <div id="kycScreen" class="screen-guide"></div>
+        </div>
+      </section>
 
-        <section id="agreements" class="section">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Step 03</p>
-              <h2>完成合作框架协议电子签</h2>
-              <p>协议版本、Merchant Agreement、Pricing Agreement 和正式报价条款，请联系 Sales 获取正式文件。</p>
-            </div>
-          </div>
-          <div id="agreementFlow" class="agreement-flow"></div>
-          <div class="sales-callout">
-            <div>
-              <span>需要正式协议或报价文件？</span>
-              <strong>请联系 Sales 获取正式文件</strong>
-            </div>
-          </div>
-        </section>
+      <section id="agreements" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Step 03</p>
+          <h2>完成合作框架协议电子签</h2>
+          <p>协议版本、Merchant Agreement、Pricing Agreement 和正式报价条款，请联系 Sales 获取正式文件。</p>
+        </div>
+        <div id="agreementFlow" class="timeline"></div>
+        <div id="agreementDocs" class="card-grid after-block"></div>
+      </section>
 
-        <section id="saqa" class="section">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Step 04</p>
-              <h2>完成 SAQ A 电子签</h2>
-              <p>SAQ A 是 PCI DSS 的一种自评问卷路径，通常适用于商户页面不直接接触完整银行卡数据、由合规支付服务商托管敏感支付页面或字段的场景。</p>
-            </div>
-          </div>
-          <div class="split-layout">
-            <div id="saqaCards" class="info-stack"></div>
-            <div class="security-visual">
-              <div class="window-bar"><span></span><span></span><span></span></div>
-              <div class="shield-art">
-                <span>SAQ A</span>
-                <strong>Card security review</strong>
-                <small>PCI DSS self-assessment</small>
-                <i></i><i></i><i></i>
-              </div>
-            </div>
-          </div>
-          <div id="saqaLinks" class="reference-strip"></div>
-        </section>
+      <section id="saqa" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Step 04</p>
+          <h2>完成 SAQ A 电子签</h2>
+          <p>SAQ A 是 PCI DSS 的一种自评问卷路径，通常用于商户页面不直接接触完整银行卡数据、由合规支付服务商托管敏感支付页面或字段的场景。</p>
+        </div>
+        <div id="saqaCards" class="card-grid"></div>
+        <div id="saqaLinks" class="reference-strip"></div>
+      </section>
 
-        <section id="production" class="section">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Step 05</p>
-              <h2>获取生产环境账号</h2>
-              <p>生产环境登录网址：<strong>CA-LIVE.ADYEN.COM</strong>。请使用 Google Authenticator 或 Microsoft Authenticator 进行多重验证登录。测试环境账号、KYC 材料、合作框架协议电子签、SAQ A 电子签完成后，即可进入生产环境账号开通流程。</p>
-            </div>
-          </div>
-          <div id="walkthroughTabs" class="country-tabs"></div>
-          <div id="walkthroughPanel" class="walkthrough-panel"></div>
-        </section>
+      <section id="production" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Step 05</p>
+          <h2>获取生产环境账号</h2>
+          <p>生产环境登录网址：<strong>CA-LIVE.ADYEN.COM</strong>。前四步完成后，即可进入生产环境账号开通流程。</p>
+        </div>
+        <div id="walkthroughTabs" class="country-tabs"></div>
+        <div id="walkthroughPanel" class="walkthrough-panel"></div>
+        <div class="panel after-block">
+          <h3>生产环境开通后检查</h3>
+          <div id="productionChecklist" class="checklist"></div>
+        </div>
+      </section>
 
-        <section id="sources" class="section">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">References</p>
-              <h2>参考的 Adyen 官方文档</h2>
-              <p>页面内容根据公开文档整理成中文说明。具体政策、权限和协议仍以官方文档及 Sales/Legal 提供文件为准。</p>
-            </div>
-          </div>
-          <div id="sourceCards" class="card-grid"></div>
-        </section>
-      </main>
-    </div>
+      <section id="visual" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Visual reference</p>
+          <h2>视觉图放在页面底部，作为总结而不是首屏阻挡</h2>
+          <p>这张图保留品牌感和完整性，但不再抢占商户最需要先看到的操作路径。</p>
+        </div>
+        <figure class="visual-stage">
+          <img src="adyen-launch-visual.png" alt="Adyen merchant launch visual" />
+          <figcaption>商户完成测试、KYC、协议和 SAQ A 后，进入生产环境上线。</figcaption>
+        </figure>
+      </section>
+
+      <section id="sources" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">References</p>
+          <h2>参考的 Adyen 官方文档</h2>
+          <p>页面内容根据公开文档整理成中文说明。具体政策、权限和协议仍以官方文档及 Sales/Legal 提供文件为准。</p>
+        </div>
+        <div id="sourceCards" class="card-grid"></div>
+      </section>
+    </main>
 
     <script src="config.js"></script>
     <script src="app.js"></script>

@@ -4,10 +4,32 @@
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
+  function list(items) {
+    return `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+  }
+
   function setActiveSection(sectionId) {
     $$(".nav-item").forEach((item) => item.classList.toggle("active", item.dataset.section === sectionId));
     $$(".section").forEach((section) => section.classList.toggle("active", section.id === sectionId));
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function renderCards(target, items, label = "") {
+    $(target).innerHTML = items
+      .map(
+        (item) => `
+          <article class="card">
+            ${label ? `<span>${label}</span>` : item.label ? `<span>${item.label}</span>` : ""}
+            <h3>${item.title}</h3>
+            <p>${item.detail || item.text}</p>
+          </article>
+        `
+      )
+      .join("");
+  }
+
+  function renderChecks(target, items) {
+    $(target).innerHTML = items.map((item) => `<label><input type="checkbox" /> <span>${item}</span></label>`).join("");
   }
 
   function renderLaunchSteps() {
@@ -22,6 +44,10 @@
         `
       )
       .join("");
+  }
+
+  function renderDiagnostics() {
+    $("#diagnostics").innerHTML = config.diagnostics.map((item) => `<p><strong>${item.title}</strong>${item.detail}</p>`).join("");
   }
 
   function renderCountryTabs() {
@@ -43,96 +69,48 @@
       <div class="country-hero">
         <span>${country.flag}</span>
         <div>
-          <h3>${country.heading || country.label}</h3>
+          <h3>${country.heading}</h3>
           <p>${country.registration}</p>
         </div>
       </div>
-      <div class="country-columns three">
-        <article>
-          <h4>常见公司类型</h4>
-          <ul>${country.entityTypes.map((item) => `<li>${item}</li>`).join("")}</ul>
-        </article>
-        <article>
-          <h4>该国家/地区特有注册文件</h4>
-          <ul>${country.registrationDocuments.map((item) => `<li>${item}</li>`).join("")}</ul>
-        </article>
-        <article>
-          <h4>注册号/登记信息</h4>
-          <p>${country.registrationNumber}</p>
-        </article>
+      <div class="country-columns">
+        <article><h4>常见公司类型</h4>${list(country.entityTypes)}</article>
+        <article><h4>特有注册文件</h4>${list(country.registrationDocuments)}</article>
+        <article><h4>注册号/登记信息</h4><p>${country.registrationNumber}</p></article>
       </div>
-      <div class="shared-materials">
-        <h4>共用所需信息（可在 config.js 编辑）</h4>
-        <ul>${config.sharedKycMaterials.map((item) => `<li>${item}</li>`).join("")}</ul>
-      </div>
-      <div class="note-band strong-note">
-        <strong>重要：</strong>身份文件建议用手机直接拍照上传，不建议提供扫描件、黑白件、压缩模糊件或带反光遮挡的图片。
-      </div>
-      <div class="mini-note">${country.note}</div>
+      <article class="shared-materials">
+        <h4>共用所需信息</h4>
+        ${list(config.sharedKycMaterials)}
+      </article>
+      <p class="strong-note"><strong>重要：</strong>身份文件建议用手机直接拍照上传，确保四角完整、彩色清晰、无遮挡、不反光。</p>
+      <p class="mini-note">${country.note}</p>
     `;
   }
 
-  function renderInfoStack(target, items) {
-    $(target).innerHTML = items
-      .map(
-        (item) => `
-          <article class="info-card">
-            <h3>${item.title}</h3>
-            <p>${item.detail}</p>
-          </article>
-        `
-      )
-      .join("");
-  }
-
-  function renderTestSteps() {
-    $("#testSteps").innerHTML = config.testSteps
-      .map(
-        (step, index) => `
-          <article class="visual-step">
-            <div class="step-art ${step.visual}">
-              <span>${index + 1}</span>
-              <i></i><i></i><i></i>
-            </div>
-            <div>
-              <h3>${step.title}</h3>
-              <p>${step.text}</p>
-            </div>
-          </article>
-        `
-      )
-      .join("");
-  }
-
-  function renderKycUploadSteps() {
-    $("#kycUploadSteps").innerHTML = config.kycUploadSteps
-      .map(
-        (step, index) => `
-          <article class="visual-step">
-            <div class="step-art form">
-              <span>${index + 1}</span>
-              <i></i><i></i><i></i>
-            </div>
-            <div>
-              <h3>${step.title}</h3>
-              <p>${step.text}</p>
-            </div>
-          </article>
-        `
-      )
-      .join("");
+  function renderScreen(target, screen) {
+    $(target).innerHTML = `
+      <div class="mock-screen">
+        <div class="window-bar"><span></span><span></span><span></span></div>
+        <aside>
+          <b>Adyen</b>
+          ${screen.menu.map((item, index) => `<em class="${index === screen.active ? "selected" : ""}">${item}</em>`).join("")}
+        </aside>
+        <main>
+          <h3>${screen.title}</h3>
+          <div class="screen-search"></div>
+          <div class="screen-table">${Array.from({ length: 9 }, () => "<span></span>").join("")}</div>
+        </main>
+      </div>
+      <article class="screen-copy">
+        <h3>${screen.caption}</h3>
+        ${list(screen.steps)}
+      </article>
+    `;
   }
 
   function renderAgreementFlow() {
     $("#agreementFlow").innerHTML = config.agreementFlow
-      .map(
-        (item, index) => `
-          <article class="agreement-step">
-            <span>${index + 1}</span>
-            <p>${item}</p>
-          </article>
-        `
-      )
+      .map((item, index) => `<article><span>${index + 1}</span><p>${item}</p></article>`)
       .join("");
   }
 
@@ -150,76 +128,42 @@
   }
 
   function renderWalkthroughPanel() {
-    const item = config.walkthroughs.find((walkthrough) => walkthrough.id === state.walkthrough);
-    $("#walkthroughPanel").innerHTML = `
-      <div class="screen-shot">
-        <div class="window-bar"><span></span><span></span><span></span></div>
-        <aside>
-          <b>Adyen</b>
-          <em>Payments</em>
-          <em class="selected">Reports</em>
-          <em>Settings</em>
-          <em>Developers</em>
-        </aside>
-        <main>
-          <div class="screen-title">${item.title}</div>
-          <div class="screen-search"></div>
-          <div class="screen-table">
-            <span></span><span></span><span></span>
-            <span></span><span></span><span></span>
-            <span></span><span></span><span></span>
-          </div>
-        </main>
-      </div>
-      <div class="walkthrough-copy">
-        <h3>${item.title}</h3>
-        <p>${item.caption}</p>
-        <ol>${item.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
-      </div>
-    `;
+    renderScreen("#walkthroughPanel", config.walkthroughs.find((item) => item.id === state.walkthrough));
   }
 
-  function renderSources() {
-    const target = $("#sourceCards");
-    if (!target) return;
-    target.innerHTML = config.sources
-      .map(
-        (source) => `
-          <a class="doc-card source-card" href="${source.url}" target="_blank" rel="noreferrer">
-            <span>Official docs</span>
-            <h3>${source.title}</h3>
-            <p>${source.detail}</p>
-          </a>
-        `
-      )
-      .join("");
-  }
-
-  function wireGlobalClicks() {
+  function wireClicks() {
     document.addEventListener("click", (event) => {
       const jump = event.target.closest("[data-jump]");
       if (jump) setActiveSection(jump.dataset.jump);
-      const section = event.target.closest("[data-section]");
-      if (section && !section.classList.contains("nav-item")) setActiveSection(section.dataset.section);
     });
     $$(".nav-item").forEach((button) => button.addEventListener("click", () => setActiveSection(button.dataset.section)));
+    $("#copyChecklist").addEventListener("click", async () => {
+      const text = config.readinessChecklist.map((item) => `- [ ] ${item}`).join("\n");
+      await navigator.clipboard.writeText(text);
+      $("#copyChecklist").textContent = "已复制";
+      setTimeout(() => ($("#copyChecklist").textContent = "复制检查清单"), 1600);
+    });
   }
 
   function init() {
     renderLaunchSteps();
-    renderTestSteps();
+    renderDiagnostics();
+    renderChecks("#readiness", config.readinessChecklist);
+    renderCards("#testSteps", config.testSteps, "Test setup");
+    renderScreen("#testScreen", config.testScreen);
     renderCountryTabs();
     renderCountryPanel();
-    renderKycUploadSteps();
+    renderChecks("#kycReview", config.kycReviewChecklist);
+    renderScreen("#kycScreen", config.kycScreen);
     renderAgreementFlow();
-    renderInfoStack("#saqaCards", config.saqaCards);
-    $("#saqaLinks").innerHTML = config.saqaLinks
-      .map((link) => `<a href="${link.url}" target="_blank" rel="noreferrer">${link.title}</a>`)
-      .join("");
+    renderCards("#agreementDocs", config.agreementDocuments);
+    renderCards("#saqaCards", config.saqaCards);
+    $("#saqaLinks").innerHTML = config.saqaLinks.map((link) => `<a href="${link.url}" target="_blank" rel="noreferrer">${link.title}</a>`).join("");
     renderWalkthroughTabs();
     renderWalkthroughPanel();
-    renderSources();
-    wireGlobalClicks();
+    renderChecks("#productionChecklist", config.productionChecklist);
+    renderCards("#sourceCards", config.sources, "Official docs");
+    wireClicks();
   }
 
   init();
