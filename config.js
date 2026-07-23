@@ -35,7 +35,7 @@ window.MERCHANT_ONBOARDING = {
     {
       id: "hk",
       label: "香港实体",
-      flag: "HK",
+      flag: "🇭🇰",
       entityTypes: ["Private company limited by shares (Ltd)", "Public unlimited company with share capital", "Private unlimited company with share capital"],
       heading: "香港主体开户材料如下：",
       registration: "使用香港主体与 Adyen 合作，合规审核过程需要提供以下材料。",
@@ -46,7 +46,7 @@ window.MERCHANT_ONBOARDING = {
     {
       id: "sg",
       label: "新加坡实体",
-      flag: "SG",
+      flag: "🇸🇬",
       entityTypes: ["Private limited company (Pte Ltd)", "Exempt private company (EPC)", "Public Limited Company"],
       heading: "新加坡主体开户材料如下：",
       registration: "使用新加坡主体与 Adyen 合作，合规审核过程需要提供以下材料。",
@@ -57,7 +57,7 @@ window.MERCHANT_ONBOARDING = {
     {
       id: "us",
       label: "美国实体",
-      flag: "US",
+      flag: "🇺🇸",
       entityTypes: ["LLC", "Corporation / Corp.", "Inc.", "C-Corp", "S-Corp", "Benefit corporation"],
       heading: "美国主体开户材料如下：",
       registration: "使用美国主体与 Adyen 合作，通常需要提供公司注册文件和税务注册信息。",
@@ -68,7 +68,7 @@ window.MERCHANT_ONBOARDING = {
     {
       id: "nl",
       label: "荷兰实体",
-      flag: "NL",
+      flag: "🇳🇱",
       entityTypes: ["Besloten vennootschap (BV)", "Naamloze vennootschap (NV)"],
       heading: "荷兰主体开户材料如下：",
       registration: "使用荷兰主体与 Adyen 合作，通常需要提供 KvK 注册文件和税务/VAT 信息。",
@@ -79,7 +79,7 @@ window.MERCHANT_ONBOARDING = {
     {
       id: "de",
       label: "德国实体",
-      flag: "DE",
+      flag: "🇩🇪",
       entityTypes: ["Gesellschaft mit beschraenkter Haftung (GmbH)", "Unternehmergesellschaft (UG)", "Aktiengesellschaft (AG)"],
       heading: "德国主体开户材料如下：",
       registration: "使用德国主体与 Adyen 合作，通常需要提供 Handelsregister 注册文件和税务/VAT 信息。",
@@ -99,7 +99,7 @@ window.MERCHANT_ONBOARDING = {
   kycReviewChecklist: [
     "公司名称、注册号、注册地址与注册文件一致",
     "股东和签字人的身份证明为彩色清晰照片",
-    "联系人邮箱和手机号真实可用",
+    "财务、技术、客服对接角色已确认，后续可接收对应通知",
     "官网/APP、用户协议、隐私条款链接可以公开访问",
     "文件命名清楚，能看出国家、主体、材料类型和日期"
   ],

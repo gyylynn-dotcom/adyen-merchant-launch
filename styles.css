@@ -25,6 +25,7 @@ a { color: inherit; }
 .eyebrow { margin: 0 0 10px; color: var(--green-dark); font-size: 13px; font-weight: 950; letter-spacing: 0; text-transform: uppercase; }
 h1, h2, h3, h4, p { margin-top: 0; }
 h1 { max-width: 900px; margin-bottom: 18px; font-size: clamp(46px, 8vw, 86px); line-height: 1; letter-spacing: 0; }
+h1 span { display: block; }
 h2 { margin-bottom: 12px; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; letter-spacing: 0; }
 h3 { margin-bottom: 10px; font-size: 22px; line-height: 1.18; }
 h4 { margin-bottom: 8px; font-size: 16px; }
@@ -70,7 +71,7 @@ p, li, small { color: var(--muted); line-height: 1.65; }
 .country-tabs button.active { border-color: var(--green); background: var(--green); }
 .country-panel { padding: 24px; box-shadow: var(--shadow); }
 .country-hero { display: flex; gap: 18px; align-items: center; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
-.country-hero span { display: grid; place-items: center; width: 64px; height: 64px; color: var(--navy); background: var(--green); font-weight: 950; }
+.country-hero span { display: grid; place-items: center; width: 68px; height: 68px; border: 1px solid var(--line); border-radius: 50%; background: #fff; box-shadow: 0 10px 24px rgba(6, 20, 47, 0.08); font-size: 34px; line-height: 1; }
 .country-hero div { min-width: 0; margin-right: auto; }
 .country-columns { margin-top: 18px; }
 .country-columns article, .shared-materials, .mini-note, .strong-note { border-radius: 8px; padding: 18px; background: var(--soft); }
@@ -102,7 +103,6 @@ ul, ol { margin: 0; padding-left: 20px; color: var(--muted); line-height: 1.7; }
 
 .visual-stage { margin: 0; }
 .visual-stage img { display: block; width: 100%; max-height: 720px; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); }
-.visual-stage figcaption { margin-top: 12px; color: var(--muted); text-align: center; }
 
 @media (max-width: 1080px) {
   .two-column, .launch-steps, .card-grid, .country-columns, .screen-guide, .walkthrough-panel, .timeline { grid-template-columns: 1fr; }
