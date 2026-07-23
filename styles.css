@@ -28,6 +28,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 h1 { max-width: 900px; margin-bottom: 18px; font-size: clamp(46px, 8vw, 86px); line-height: 1; letter-spacing: 0; }
 h1 span { display: block; }
 .brand-title { max-width: 980px; font-family: "Adyen", "Helvetica", "Arial", "Inter", sans-serif; font-size: clamp(58px, 10vw, 118px); font-weight: 484; line-height: 0.94; letter-spacing: 0; text-transform: uppercase; }
+.chinese-title { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", "Helvetica", "Arial", sans-serif; font-size: clamp(48px, 8vw, 92px); font-weight: 900; line-height: 1.04; text-transform: none; }
 .brand-title span:first-child { color: var(--ink); }
 .brand-title span:last-child { color: var(--green); }
 h2 { margin-bottom: 12px; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; letter-spacing: 0; }
